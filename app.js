@@ -202,7 +202,7 @@
       },
       searchExternalID: function(data, page) {
         return {
-          url: '/api/v2/tickets.json?external_id=' + data + '&page=' + page + '&per_page=50',
+          url: '/api/v2/tickets.json?external_id=' + data + '&page=' + page + '&per_page=100',
           dataType: 'JSON',
           type: 'GET',
           contentType: 'application/json',
@@ -518,7 +518,7 @@
         _.each(data.tickets, buildTicketList, this);
         if (data.next_page !== null) {
           nextPage = nextPage + 1;
-          this.getProjectSearch(data.ticket[0].external_id, nextPage);
+          this.getProjectSearch(data.tickets[0].external_id, nextPage);
         }
       }
       this.switchTo('list', {
